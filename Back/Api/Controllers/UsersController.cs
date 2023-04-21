@@ -35,4 +35,18 @@ public class UsersController : ControllerBase
         var result = await _service.Add(user);
         return Ok(result);
     }
+    
+    [HttpPut]
+    public async Task<IActionResult> Put([FromBody] Users user)
+    {
+        var result = await _service.Update(user);
+        return Ok(result);
+    }
+    
+    [HttpDelete("{id:int}")]
+    public IActionResult Delete(int id)
+    {
+        _service.Delete(id);
+        return Ok();
+    }
 }
