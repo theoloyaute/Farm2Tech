@@ -1,0 +1,87 @@
+import { AfterContentInit, ChangeDetectorRef, ElementRef, EventEmitter, OnDestroy, OnInit, QueryList, Renderer2, TemplateRef } from '@angular/core';
+import { MenuItem, PrimeNGConfig } from 'primeng/api';
+import { Subject, Subscription } from 'rxjs';
+import * as i0 from "@angular/core";
+import * as i1 from "@angular/common";
+import * as i2 from "@angular/router";
+import * as i3 from "primeng/ripple";
+import * as i4 from "primeng/tooltip";
+import * as i5 from "primeng/api";
+export declare class MenubarService {
+    autoHide: boolean;
+    autoHideDelay: number;
+    readonly mouseLeaves: Subject<boolean>;
+    readonly mouseLeft$: import("rxjs").Observable<boolean>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<MenubarService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<MenubarService>;
+}
+export declare class MenubarSub implements OnInit, OnDestroy {
+    el: ElementRef;
+    renderer: Renderer2;
+    private cd;
+    private menubarService;
+    item: MenuItem;
+    root: boolean;
+    autoZIndex: boolean;
+    baseZIndex: number;
+    mobileActive: boolean;
+    autoDisplay: boolean;
+    get parentActive(): boolean;
+    set parentActive(value: boolean);
+    leafClick: EventEmitter<any>;
+    _parentActive: boolean;
+    documentClickListener: any;
+    menuHoverActive: boolean;
+    activeItem: any;
+    mouseLeaveSubscriber: Subscription;
+    constructor(el: ElementRef, renderer: Renderer2, cd: ChangeDetectorRef, menubarService: MenubarService);
+    ngOnInit(): void;
+    onItemClick(event: any, item: any): void;
+    onItemMouseLeave(event: any, item: any): void;
+    onItemMouseEnter(event: any, item: any): void;
+    onLeafClick(): void;
+    bindDocumentClickListener(): void;
+    unbindDocumentClickListener(): void;
+    ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<MenubarSub, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MenubarSub, "p-menubarSub", never, { "item": "item"; "root": "root"; "autoZIndex": "autoZIndex"; "baseZIndex": "baseZIndex"; "mobileActive": "mobileActive"; "autoDisplay": "autoDisplay"; "parentActive": "parentActive"; }, { "leafClick": "leafClick"; }, never, never, false, never>;
+}
+export declare class Menubar implements AfterContentInit, OnDestroy, OnInit {
+    el: ElementRef;
+    renderer: Renderer2;
+    cd: ChangeDetectorRef;
+    config: PrimeNGConfig;
+    private menubarService;
+    model: MenuItem[];
+    style: any;
+    styleClass: string;
+    autoZIndex: boolean;
+    baseZIndex: number;
+    autoDisplay: boolean;
+    autoHide: boolean;
+    autoHideDelay: number;
+    templates: QueryList<any>;
+    menubutton: ElementRef;
+    rootmenu: MenubarSub;
+    startTemplate: TemplateRef<any>;
+    endTemplate: TemplateRef<any>;
+    mobileActive: boolean;
+    outsideClickListener: any;
+    mouseLeaveSubscriber: Subscription;
+    constructor(el: ElementRef, renderer: Renderer2, cd: ChangeDetectorRef, config: PrimeNGConfig, menubarService: MenubarService);
+    ngOnInit(): void;
+    ngAfterContentInit(): void;
+    toggle(event: any): void;
+    bindOutsideClickListener(): void;
+    hide(): void;
+    onLeafClick(): void;
+    unbindOutsideClickListener(): void;
+    ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<Menubar, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<Menubar, "p-menubar", never, { "model": "model"; "style": "style"; "styleClass": "styleClass"; "autoZIndex": "autoZIndex"; "baseZIndex": "baseZIndex"; "autoDisplay": "autoDisplay"; "autoHide": "autoHide"; "autoHideDelay": "autoHideDelay"; }, {}, ["templates"], ["*"], false, never>;
+}
+export declare class MenubarModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<MenubarModule, never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<MenubarModule, [typeof Menubar, typeof MenubarSub], [typeof i1.CommonModule, typeof i2.RouterModule, typeof i3.RippleModule, typeof i4.TooltipModule, typeof i5.SharedModule], [typeof Menubar, typeof i2.RouterModule, typeof i4.TooltipModule, typeof i5.SharedModule]>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<MenubarModule>;
+}

@@ -53,3 +53,11 @@
 /Users/theoloyaute/RiderProjects/Farm2Tech/Back/obj/Debug/net7.0/Back.pdb
 /Users/theoloyaute/RiderProjects/Farm2Tech/Back/obj/Debug/net7.0/Back.genruntimeconfig.cache
 /Users/theoloyaute/RiderProjects/Farm2Tech/Back/obj/Debug/net7.0/ref/Back.dll
+/Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/BCrypt.Net-Core.dll
+/Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll

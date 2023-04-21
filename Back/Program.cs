@@ -1,4 +1,8 @@
 using System.Text.Json.Serialization;
+using Back.Application.Interface;
+using Back.Application.Interface.JwtService;
+using Back.Application.Service;
+using Back.Application.Service.JwtService;
 using Back.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +16,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers().AddJsonOptions(x =>
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IUsersService, UsersService>();
+
+builder.Services.AddScoped<IJwtService, JwtService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>

@@ -47,3 +47,9 @@ public partial class Users
     [InverseProperty("Users")]
     public virtual Service? Service { get; set; }
 }
+
+public partial class Login
+{
+    public string Email { get; set; }
+    public string Password { get; set; }
+}

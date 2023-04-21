@@ -1,8 +1,6 @@
 using Back.Api.Models;
-using Back.Infrastructure.Context;
-using Microsoft.AspNetCore.Authorization;
+using Back.Application.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Back.Api.Controllers;
 
@@ -10,22 +8,31 @@ namespace Back.Api.Controllers;
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly IUsersService _service;
     
-    public UsersController(AppDbContext context)
+    public UsersController(IUsersService service)
     {
-        _context = context;
+        _service = service;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var result = await _service.ListAsync();
+        return Ok(result);
     }
     
-    [HttpGet(Name = "GetUsersList")]
-    public async Task<ActionResult<List<Users>>> GetUsersList() => await _context.Users.ToListAsync();
-    
-    [HttpGet("{id}", Name = "GetUserById")]
-    public async Task<ActionResult<Users>> GetUserById(int id)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> Get(int id)
     {
-        var user = await _context.Users.FindAsync(id);
-        if (user is null) return NotFound();
-        return user;
+        var result = await _service.FindAsync(id);
+        return Ok(result);
     }
     
+    [HttpPost]
+    public async Task<IActionResult> Post([FromBody] Users user)
+    {
+        var result = await _service.Add(user);
+        return Ok(result);
+    }
 }
