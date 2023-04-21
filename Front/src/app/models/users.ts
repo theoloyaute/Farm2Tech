@@ -2,8 +2,8 @@ import {Service} from "./service";
 
 export interface User {
   id?: number;
-  firstName?: string;
-  lastName?: string;
+  firstname?: string;
+  lastname?: string;
   email?: string;
   fix?: number;
   mobile?: number;
