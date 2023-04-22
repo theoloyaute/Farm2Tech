@@ -1,3 +1,4 @@
+using Back.Api.Error;
 using Back.Application.Interface;
 using Back.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +14,9 @@ public class ServiceService : IServiceService
         _context = context;
     }
     
-    public async Task<IEnumerable<Service>> ListAsync() => await _context.Service.ToListAsync();
+    public async Task<IEnumerable<Api.Models.Service>> ListAsync() => await _context.Service.ToListAsync();
     
-    public async Task<Service> FindAsync(int id)
+    public async Task<Api.Models.Service> FindAsync(int id)
     {
         await _context.Service.Include(x => x.Site)
             .FirstOrDefaultAsync(x => x.Id == id);
@@ -24,7 +25,7 @@ public class ServiceService : IServiceService
         return service;
     }
     
-    public async Task<Service?> Add(Service entity)
+    public async Task<Api.Models.Service?> Add(Api.Models.Service entity)
     {
         entity.Id = _context.Service.Max(x => x.Id) + 1;
         var result = _context.Service.Add(entity);
@@ -32,7 +33,7 @@ public class ServiceService : IServiceService
         return result.Entity;
     }
     
-    public async Task<Service?> Update(Service entity)
+    public async Task<Api.Models.Service?> Update(Api.Models.Service entity)
     {
         var service = await _context.Service.FindAsync(entity.Id);
         if (service is null) throw new NotFoundException("Service introuvable !");

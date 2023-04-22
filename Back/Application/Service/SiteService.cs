@@ -1,11 +1,12 @@
 using Back.Api.Error;
 using Back.Api.Models;
+using Back.Application.Interface;
 using Back.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Back.Application.Service;
 
-public class SiteService
+public class SiteService : ISiteService
 {
     private readonly AppDbContext _context;
     
