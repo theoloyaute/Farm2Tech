@@ -20,10 +20,10 @@
         <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.29.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Api\Models" />
       <Folder Include="Infrastructure\Context" />
     </ItemGroup>
 

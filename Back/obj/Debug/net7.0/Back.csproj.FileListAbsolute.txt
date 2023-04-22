@@ -61,3 +61,4 @@
 /Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
 /Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/theoloyaute/RiderProjects/Farm2Tech/Back/bin/Debug/net7.0/Microsoft.IdentityModel.Abstractions.dll
