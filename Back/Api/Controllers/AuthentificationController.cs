@@ -22,15 +22,8 @@ public class AuthentificationController : ControllerBase
     public ActionResult Login([FromBody] Login model)
     {
         var user = _jwtService.Auth(model.Email.ToLower(), model.Password);
-        if (user is null) throw new BadRequestException("Email incorrect !");
-        if (!BCrypt.Net.BCrypt.Verify(model.Password, user.Password)) throw new BadRequestException("Mot de passe incorect !");
-        var claims = new List<Claim>
-        {
-            new(ClaimTypes.Email, user.Email),
-            new(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new(ClaimTypes.Role, user.Isadmin.ToString() ?? "false")
-        };
-        var token = _jwtService.GenerateToken(claims);
-        return Ok(token);
+        if (user is null) throw new BadRequestException("Email ou mot de passe incorrect !");
+        var token = _jwtService.GenerateToken(user);
+        return Ok(new JsonResult(token));
     }
 }
