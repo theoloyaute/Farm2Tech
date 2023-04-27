@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="grid">
+    <div class="col-5 flex align-items-center justify-content-center">
+      <div class="p-fluid">
+        <form [formGroup]="userFormGroup" (ngSubmit)="login()">
+          <div class="field">
+            <label for="email">Email</label>
+            <input pInputText formControlName="email" id="email" type="email" />
+          </div>
+          <div class="field">
+            <label for="password">Mot de passe</label>
+            <input pInputText formControlName="password" id="password" type="password" />
+          </div>
+          <p-button type="submit" label="Login"></p-button>
+        </form>
+      </div>
+    </div>
+    <div class="col-2">
+      <p-divider layout="vertical">
+        <b>OR</b>
+      </p-divider>
+    </div>
+    <div class="col-5 flex align-items-center justify-content-center">
+      <p-button label="Sign Up" icon="pi pi-user-plus" styleClass="p-button-success"></p-button>
+    </div>
+    <span class="p-error" *ngIf="errorMessage">{{ errorMessage }}</span>
+  </div>
+</div>

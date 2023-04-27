@@ -6,16 +6,32 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './pages/users/users.component';
 import {UsersService} from "./services/users.service";
 import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './pages/login/login.component';
+import {CheckboxModule} from "primeng/checkbox";
+import {StyleClassModule} from 'primeng/styleclass';
+import {ButtonModule} from "primeng/button";
+import {DividerModule} from "primeng/divider";
+import {ReactiveFormsModule} from "@angular/forms";
+import {PaginatorModule} from "primeng/paginator";
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent
+    UsersComponent,
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CheckboxModule,
+    StyleClassModule,
+    ButtonModule,
+    DividerModule,
+    ReactiveFormsModule,
+    PaginatorModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]

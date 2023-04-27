@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/users";
 import {UsersService} from "../../services/users.service";
+import {AuthentificationService} from "../../services/authentification.service";
 
 @Component({
   selector: 'app-users',
@@ -10,13 +11,12 @@ import {UsersService} from "../../services/users.service";
 export class UsersComponent implements OnInit {
 
   users: User[] = [];
-    constructor(private UsersService: UsersService) { }
+    constructor(private UsersService: UsersService, private authService: AuthentificationService) { }
 
   ngOnInit(): void {
     this.UsersService.getUsers().subscribe((users: User[]) => {
       this.users = users;
     });
+    this.authService.isLoggedIn();
   }
-
-
 }

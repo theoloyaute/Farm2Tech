@@ -1,0 +1,10 @@
+<div class="contain">
+  <div class="card">
+    <span class="title">Farm2Tech</span>
+  </div>
+  <div class="card">
+    <p-button label="Se connecter" *ngIf="!isLoggedIn()" [routerLink]="['/login']" styleClass="p-button-raised p-button-text p-button-secondary"></p-button>
+    <p-button label="Se déconnecter" *ngIf="isLoggedIn()" (click)="logout()" styleClass="p-button-raised p-button-text p-button-secondary"></p-button>
+  </div>
+</div>
+<div class="line-height-1"></div>
