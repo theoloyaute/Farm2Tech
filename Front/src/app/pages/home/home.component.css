@@ -8,21 +8,12 @@
   font-size: 1rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  margin: 1rem ;
-}
-
-.contain {
-  display: flex;
-  flex-direction: column;
+.p-table {
+  width: 100%;
 }
 
 .title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   font-size: 1.5rem;
   font-weight: bold;
   width: 100%;

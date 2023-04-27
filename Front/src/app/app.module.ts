@@ -15,6 +15,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {PaginatorModule} from "primeng/paginator";
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
@@ -24,17 +25,18 @@ import { HomeComponent } from './pages/home/home.component';
     HeaderComponent,
     HomeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    CheckboxModule,
-    StyleClassModule,
-    ButtonModule,
-    DividerModule,
-    ReactiveFormsModule,
-    PaginatorModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        CheckboxModule,
+        StyleClassModule,
+        ButtonModule,
+        DividerModule,
+        ReactiveFormsModule,
+        PaginatorModule,
+        TableModule
+    ],
   providers: [UsersService],
   bootstrap: [AppComponent]
 })

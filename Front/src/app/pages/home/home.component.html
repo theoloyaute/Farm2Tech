@@ -1,42 +1,62 @@
 <app-header></app-header>
 
-<input class="search" id="search" type="text" placeholder="Recherche">
-<div class="grid">
+<input [ngModel]="searchValue" (input)="onInput($event)" class="search" id="search" type="text" placeholder="Recherche">
+<div>
 
-  <div class="contain">
-    <span class="title">Nom</span>
-    <div class="content" *ngFor="let user of users">
-      <span>{{ user.firstname }} {{ user.lastname }}</span>
-    </div>
-  </div>
+  <p-table class="p-table" [value]="users" [paginator]="true" [rows]="25">
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="title" style="width: 35%">Nom</th>
+        <th class="title">Email</th>
+        <th class="title">Téléphone</th>
+        <th class="title">Service</th>
+        <th class="title">Site</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.firstname }} {{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.mobile }}</td>
+        <td>{{ user.service?.name }}</td>
+        <td>{{ user.service?.site?.city }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+<!--  <div class="contain">-->
+<!--    <span class="title">Nom</span>-->
+<!--    <div class="content" *ngFor="let user of users">-->
+<!--      <span>{{ user.firstname }} {{ user.lastname }}</span>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div class="contain">
-    <span class="title">Email</span>
-    <div class="content" *ngFor="let user of users">
-      <span>{{ user.email }}</span>
-    </div>
-  </div>
+<!--  <div class="contain">-->
+<!--    <span class="title">Email</span>-->
+<!--    <div class="content" *ngFor="let user of users">-->
+<!--      <span>{{ user.email }}</span>-->
+<!--    </div>-->
+<!--  </div>-->
 
 
-  <div class="contain">
-    <span class="title">Téléphone</span>
-    <div class="content" *ngFor="let user of users">
-      <span>{{ user.mobile }}</span>
-    </div>
-  </div>
+<!--  <div class="contain">-->
+<!--    <span class="title">Téléphone</span>-->
+<!--    <div class="content" *ngFor="let user of users">-->
+<!--      <span>{{ user.mobile }}</span>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div class="contain">
-    <span class="title">Service</span>
-    <div class="content" *ngFor="let user of users">
-      <span>{{ user.service }}</span>
-    </div>
-  </div>
+<!--  <div class="contain">-->
+<!--    <span class="title">Service</span>-->
+<!--    <div class="content" *ngFor="let user of users">-->
+<!--      <span>{{ user.service?.name }}</span>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div class="contain">
-    <span class="title">Site</span>
-    <div class="content" *ngFor="let user of users">
-      <span></span>
-    </div>
-  </div>
+<!--  <div class="contain">-->
+<!--    <span class="title">Site</span>-->
+<!--    <div class="content" *ngFor="let user of users">-->
+<!--      <span>{{ user.service?.site?.city }}</span>-->
+<!--    </div>-->
+<!--  </div>-->
 
 </div>

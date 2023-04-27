@@ -20,4 +20,9 @@ export class UsersService {
     const params: HttpParams = new HttpParams();
     return this.http.get(this.componentUrl, {params})
   }
+
+  getUserBySearch(searchValue: string): Observable<any>{
+    const params: HttpParams = new HttpParams();
+    return this.http.get(this.componentUrl + '/' + searchValue , {params});
+  }
 }
