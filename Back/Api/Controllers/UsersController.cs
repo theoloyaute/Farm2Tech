@@ -49,4 +49,11 @@ public class UsersController : ControllerBase
         _service.Delete(id);
         return Ok();
     }
+    
+    [HttpGet("{search}")]
+    public async Task<IActionResult> Search(string search)
+    {
+        var result = await _service.FindBySearch(search);
+        return Ok(result);
+    }
 }

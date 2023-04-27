@@ -9,4 +9,5 @@ public interface IUsersService
     Task<Users?> Add(Users user);
     Task<Users?> Update(Users entity);
     void Delete(int id);
+    Task<IEnumerable<Users>> FindBySearch(string search);
 }

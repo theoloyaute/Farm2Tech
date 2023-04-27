@@ -15,11 +15,16 @@ public class UsersService : IUsersService
         _context = context;
     }
     
-    public async Task<IEnumerable<Users>> ListAsync() => await _context.Users.ToListAsync();
+    public async Task<IEnumerable<Users>> ListAsync() => 
+        await _context.Users.Include(x => x.Service)
+            .Include(x => x.Service.Site)
+            .ToListAsync();
     
     public async Task<Users> FindAsync(int id)
     {
-        await _context.Users.Include(x => x.Service).FirstOrDefaultAsync(x => x.Id == id);
+        await _context.Users.Include(x => x.Service)
+            .Include(x => x.Service.Site)
+            .FirstOrDefaultAsync(x => x.Id == id);
         var user = await _context.Users.FindAsync(id);
         if (user is null) return null;
         return user;
@@ -59,5 +64,26 @@ public class UsersService : IUsersService
         if (user is null) throw new NotFoundException("Utilisateur introuvable !");
         _context.Users.Remove(user);
         _context.SaveChanges();
+    }
+
+    public async Task<IEnumerable<Users>> FindBySearch(string search)
+    {
+        if (System.Text.RegularExpressions.Regex.IsMatch(search, "^[0-9]+$"))
+        {
+            return null!;
+        }
+        var searchValue = search.ToLower();
+        var user = _context.Users
+            .Include(x => x.Service)
+            .Include(x => x.Service.Site)
+            .Where(x =>
+            x.Firstname.ToLower().StartsWith(searchValue) ||
+            x.Lastname.ToLower().StartsWith(searchValue) ||
+            x.Email.ToLower().StartsWith(searchValue) ||
+            x.Service.Name.ToLower().StartsWith(searchValue) ||
+            x.Service.Site.City.ToLower().StartsWith(searchValue))
+            .ToListAsync();
+
+        return await user;
     }
 }

@@ -21,9 +21,15 @@ public class AuthentificationController : ControllerBase
     [HttpPost]
     public ActionResult Login([FromBody] Login model)
     {
-        var user = _jwtService.Auth(model.Email.ToLower(), model.Password);
-        if (user is null) throw new BadRequestException("Email ou mot de passe incorrect !");
-        var token = _jwtService.GenerateToken(user);
-        return Ok(new JsonResult(token));
+        try
+        {
+            var user = _jwtService.Auth(model.Email.ToLower(), model.Password);
+            var token = _jwtService.GenerateToken(user);
+            return Ok(new JsonResult(token));
+        }
+        catch (Exception e)
+        {
+            return NotFound(new ApiResponse(404, e.Message));
+        }
     }
 }
