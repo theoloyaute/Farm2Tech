@@ -16,7 +16,9 @@ public class UsersService : IUsersService
     }
     
     public async Task<IEnumerable<Users>> ListAsync() => 
-        await _context.Users.Include(x => x.Service)
+        await _context.Users
+            .OrderBy(x => x.Id)
+            .Include(x => x.Service)
             .Include(x => x.Service.Site)
             .ToListAsync();
     

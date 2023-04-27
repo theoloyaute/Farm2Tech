@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/users";
 import {UsersService} from "../../services/users.service";
+import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -12,12 +14,15 @@ export class HomeComponent implements OnInit{
   users: User[] = [];
   cols: any[] = [];
   searchValue: string = '';
+  user: User | undefined;
 
   constructor(
-    private UsersService: UsersService
+    private UsersService: UsersService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.UsersService.isAdmin();
     this.UsersService.getUsers().subscribe((users: User[]) => {
       this.users = users;
       this.cols = [
@@ -47,5 +52,4 @@ export class HomeComponent implements OnInit{
       });
     }
   }
-
 }

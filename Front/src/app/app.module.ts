@@ -16,6 +16,9 @@ import {PaginatorModule} from "primeng/paginator";
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import {TableModule} from "primeng/table";
+import {InputSwitchModule} from "primeng/inputswitch";
+import {InputTextModule} from "primeng/inputtext";
+import {PasswordModule} from "primeng/password";
 
 @NgModule({
   declarations: [
@@ -25,18 +28,21 @@ import {TableModule} from "primeng/table";
     HeaderComponent,
     HomeComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        CheckboxModule,
-        StyleClassModule,
-        ButtonModule,
-        DividerModule,
-        ReactiveFormsModule,
-        PaginatorModule,
-        TableModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    CheckboxModule,
+    StyleClassModule,
+    ButtonModule,
+    DividerModule,
+    ReactiveFormsModule,
+    PaginatorModule,
+    TableModule,
+    InputSwitchModule,
+    InputTextModule,
+    PasswordModule
+  ],
   providers: [UsersService],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,38 @@
-<app-header></app-header>
-
 <div class="body">
-  <div *ngFor="let user of users">
-    <span>{{ user.firstname }}</span>
-  </div>
+  <form [formGroup]="formGroup" (ngSubmit)="editUser()">
+    <div class="flex flex-column gap-2">
+      <label htmlFor="firstname">Prénom</label>
+      <input pInputText formControlName="firstname" value="{{ user?.firstname }}"/>
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="lastname">Nom</label>
+      <input pInputText formControlName="lastname" value="{{ user?.lastname }}"/>
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="email">Email</label>
+      <input pInputText formControlName="email" value="{{ user?.email }}"/>
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="fix">Téléphone fix</label>
+      <input formControlName="fix" value="{{ user?.fix }}">
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="mobile">Téléphone</label>
+      <input formControlName="mobile" value="{{ user?.mobile }}">
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="password">Mot de passe</label>
+      <input formControlName="password" value="{{ user?.password }}">
+    </div>
+    <div>
+      <label htmlFor="isadmin">Admin</label>
+      <input type="checkbox" formControlName="isadmin" value="{{ user?.isadmin }}">
+    </div>
+    <div>
+      <label htmlFor="ServiceId">Identifiant du Service</label>
+      <input formControlName="serviceId" value="{{ user?.serviceId }}">
+    </div>
+    <button type="submit">Modifier</button>
+  </form>
+  <span class="p-error" *ngIf="errorMessage">{{ errorMessage }}</span>
 </div>

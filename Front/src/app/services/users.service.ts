@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import {Router} from "@angular/router";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {User} from "../models/users";
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +12,38 @@ export class UsersService {
   protected componentUrl = this.baseUrl + '/Users';
 
   constructor(
-    protected router: Router,
-    protected http: HttpClient
-  ) { }
+    protected http: HttpClient,
+    protected jwtHelper: JwtHelperService
+  ) {
+  }
 
-  getUsers(): Observable<any>{
+  getUsers(): Observable<any> {
     const params: HttpParams = new HttpParams();
     return this.http.get(this.componentUrl, {params})
   }
 
-  getUserBySearch(searchValue: string): Observable<any>{
+  getUserById(id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+    });
+    return this.http.get(this.componentUrl + '/' + id, {headers});
+  }
+
+  getUserBySearch(searchValue: string): Observable<any> {
     const params: HttpParams = new HttpParams();
-    return this.http.get(this.componentUrl + '/' + searchValue , {params});
+    return this.http.get(this.componentUrl + '/' + searchValue, {params});
+  }
+
+  update(user: User): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+    });
+    return this.http.put(this.componentUrl, user, {headers});
+  }
+
+  isAdmin() {
+    const token: any = localStorage.getItem('token');
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    console.log(decodedToken);
   }
 }

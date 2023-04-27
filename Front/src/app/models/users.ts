@@ -8,7 +8,7 @@ export interface User {
   fix?: number;
   mobile?: number;
   password?: string;
-  isAdmin?: boolean;
+  isadmin?: boolean;
   serviceId?: number;
   service?: Service;
 }
