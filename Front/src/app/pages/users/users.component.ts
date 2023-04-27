@@ -17,6 +17,5 @@ export class UsersComponent implements OnInit {
     this.UsersService.getUsers().subscribe((users: User[]) => {
       this.users = users;
     });
-    this.authService.isLoggedIn();
   }
 }

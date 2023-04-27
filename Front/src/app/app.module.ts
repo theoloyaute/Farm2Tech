@@ -14,13 +14,15 @@ import {DividerModule} from "primeng/divider";
 import {ReactiveFormsModule} from "@angular/forms";
 import {PaginatorModule} from "primeng/paginator";
 import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

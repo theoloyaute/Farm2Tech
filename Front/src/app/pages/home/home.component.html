@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<input class="search" id="search" type="text" placeholder="Recherche">
+<div class="grid">
+
+  <div class="contain">
+    <span class="title">Nom</span>
+    <div class="content" *ngFor="let user of users">
+      <span>{{ user.firstname }} {{ user.lastname }}</span>
+    </div>
+  </div>
+
+  <div class="contain">
+    <span class="title">Email</span>
+    <div class="content" *ngFor="let user of users">
+      <span>{{ user.email }}</span>
+    </div>
+  </div>
+
+
+  <div class="contain">
+    <span class="title">Téléphone</span>
+    <div class="content" *ngFor="let user of users">
+      <span>{{ user.mobile }}</span>
+    </div>
+  </div>
+
+  <div class="contain">
+    <span class="title">Service</span>
+    <div class="content" *ngFor="let user of users">
+      <span>{{ user.service }}</span>
+    </div>
+  </div>
+
+  <div class="contain">
+    <span class="title">Site</span>
+    <div class="content" *ngFor="let user of users">
+      <span></span>
+    </div>
+  </div>
+
+</div>
