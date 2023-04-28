@@ -33,6 +33,13 @@ export class UsersService {
     return this.http.get(this.componentUrl + '/' + searchValue, {params});
   }
 
+  create(user: User): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+    });
+    return this.http.post(this.componentUrl, user, {headers});
+  }
+
   update(user: User): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')

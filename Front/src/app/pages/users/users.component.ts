@@ -43,6 +43,40 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  createUser() {
+    const user = {
+      firstname: this.formGroup.value.firstname,
+      lastname: this.formGroup.value.lastname,
+      email: this.formGroup.value.email,
+      fix: this.formGroup.value.fix,
+      mobile: this.formGroup.value.mobile,
+      password: this.formGroup.value.password,
+      isadmin: this.formGroup.value.isadmin,
+      serviceId: this.formGroup.value.serviceId,
+    }
+
+    this.UsersService.create(user).subscribe(result => {
+      this.router.navigate(['/']);
+    }, (error: HttpErrorResponse) => {
+      if (error.status == 404) {
+        this.errorMessage = "Erreur de création !";
+      }
+      if (error.status == 400) {
+        this.errorMessage = "Il faut remplir tous les champs !";
+      }
+    });
+  }
+
+  createEditUser() {
+      if (this.user?.id == undefined) {
+        this.createUser();
+      }
+      else {
+        this.editUser();
+      }
+
+  }
+
   editUser() {
       const user = {
         id: this.user?.id,

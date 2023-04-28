@@ -32,7 +32,7 @@ public class SiteController : ControllerBase
     }
     
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Post([FromBody] Site site)
     {
         var result = await _service.Add(site);

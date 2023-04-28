@@ -1,5 +1,5 @@
 <div class="body">
-  <form [formGroup]="formGroup" (ngSubmit)="editUser()">
+  <form [formGroup]="formGroup" (ngSubmit)="createEditUser()">
     <div class="flex flex-column gap-2">
       <label htmlFor="firstname">Prénom</label>
       <input pInputText formControlName="firstname" value="{{ user?.firstname }}"/>
@@ -32,9 +32,12 @@
       <label htmlFor="ServiceId">Identifiant du Service</label>
       <input formControlName="serviceId" value="{{ user?.serviceId }}">
     </div>
-    <div class="button">
+    <div *ngIf="user != null" class="button">
       <button pButton type="submit">Modifier</button>
       <button pButton class="delete" type="button" (click)="deleteUser(user?.id)">Supprimer</button>
+    </div>
+    <div *ngIf="user == null" class="button">
+      <button pButton type="submit">Créer</button>
     </div>
   </form>
   <span class="p-error" *ngIf="errorMessage">{{ errorMessage }}</span>

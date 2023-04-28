@@ -1,6 +1,12 @@
+.add {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
 .search {
   display: flex;
-  margin: 1rem;
   width: 20rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;

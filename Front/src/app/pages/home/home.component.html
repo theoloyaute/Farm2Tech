@@ -1,7 +1,9 @@
 <app-header></app-header>
-
-<input [ngModel]="searchValue" (input)="onInput($event)" class="search" id="search" type="text" placeholder="Recherche">
-<div>
+  <div class="add">
+    <input [ngModel]="searchValue" (input)="onInput($event)" class="search" id="search" type="text" placeholder="Recherche">
+    <p-button label="Ajouter un utilisateur" styleClass="p-button-raised p-button-text p-button-info" [routerLink]="['/users']"></p-button>
+  </div>
+  <div>
 
   <p-table class="p-table" [value]="users" [paginator]="true" [rows]="25">
     <ng-template pTemplate="header">

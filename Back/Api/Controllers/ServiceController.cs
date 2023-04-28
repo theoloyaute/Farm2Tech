@@ -32,7 +32,7 @@ public class ServiceController : ControllerBase
     }
     
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Post([FromBody] Service service)
     {
         var result = await _service.Add(service);

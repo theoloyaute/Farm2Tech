@@ -9,6 +9,7 @@ import {SiteComponent} from "./pages/site/site.component";
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'users', component: UsersComponent},
   {path: 'users/:id', component: UsersComponent},
   {path: 'service/:id', component: ServiceComponent},
   {path: 'site/:id', component: SiteComponent},
