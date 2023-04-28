@@ -19,6 +19,8 @@ import {TableModule} from "primeng/table";
 import {InputSwitchModule} from "primeng/inputswitch";
 import {InputTextModule} from "primeng/inputtext";
 import {PasswordModule} from "primeng/password";
+import { ServiceComponent } from './pages/service/service.component';
+import { SiteComponent } from './pages/site/site.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {PasswordModule} from "primeng/password";
     UsersComponent,
     LoginComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ServiceComponent,
+    SiteComponent
   ],
   imports: [
     BrowserModule,

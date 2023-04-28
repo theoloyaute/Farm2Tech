@@ -1,0 +1,16 @@
+<div class="body">
+  <form [formGroup]="formGroup" (ngSubmit)="editSite()">
+    <div class="flex flex-column gap-2">
+      Identifiant du site : {{ site?.id }}
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="city">Ville du site</label>
+      <input pInputText formControlName="city" value="{{ site?.city }}"/>
+    </div>
+    <div class="button">
+      <button pButton type="submit">Modifier</button>
+      <button pButton class="delete" type="button" (click)="deleteSite(site?.id)">Supprimer</button>
+    </div>
+  </form>
+  <span class="p-error" *ngIf="errorMessage">{{ errorMessage }}</span>
+</div>

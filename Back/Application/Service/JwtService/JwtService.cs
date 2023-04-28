@@ -34,7 +34,7 @@ public class JwtService : IJwtService
         {
             new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Role, user.Isadmin.ToString() ?? "false")
+            new Claim(ClaimTypes.Role, user.Isadmin == true ? "Admin" : "User" )
         };
         var token = new JwtSecurityToken(_conf["Jwt:Issuer"],
             _conf["Jwt:Audience"],

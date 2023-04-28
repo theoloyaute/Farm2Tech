@@ -1,5 +1,6 @@
 using Back.Api.Models;
 using Back.Application.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Back.Api.Controllers;
@@ -23,6 +24,7 @@ public class ServiceController : ControllerBase
     }
     
     [HttpGet("{id:int}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Get(int id)
     {
         var result = await _service.FindAsync(id);
@@ -30,6 +32,7 @@ public class ServiceController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Post([FromBody] Service service)
     {
         var result = await _service.Add(service);
@@ -37,6 +40,7 @@ public class ServiceController : ControllerBase
     }
     
     [HttpPut]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Put([FromBody] Service service)
     {
         var result = await _service.Update(service);
@@ -44,6 +48,7 @@ public class ServiceController : ControllerBase
     }
     
     [HttpDelete("{id:int}")]
+    [Authorize(Roles = "Admin")]
     public IActionResult Delete(int id)
     {
         _service.Delete(id);

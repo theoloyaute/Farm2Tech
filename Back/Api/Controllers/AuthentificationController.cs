@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Back.Api.Error;
 using Back.Api.Models;
 using Back.Application.Interface.JwtService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Back.Api.Controllers;
@@ -25,11 +26,16 @@ public class AuthentificationController : ControllerBase
         {
             var user = _jwtService.Auth(model.Email.ToLower(), model.Password);
             var token = _jwtService.GenerateToken(user);
+            if (user.Isadmin == false) return Unauthorized();
             return Ok(new JsonResult(token));
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            return Unauthorized(new ApiResponse(401, e.Message));
         }
         catch (Exception e)
         {
-            return NotFound(new ApiResponse(404, e.Message));
+            return BadRequest(new ApiResponse(400, e.Message));
         }
     }
 }

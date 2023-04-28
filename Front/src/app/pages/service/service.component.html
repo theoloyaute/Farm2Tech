@@ -1,0 +1,20 @@
+<div class="body">
+  <form [formGroup]="formGroup" (ngSubmit)="editService()">
+    <div class="flex flex-column gap-2">
+      {{ service?.id }}
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="name">Nom du service</label>
+      <input pInputText formControlName="name" value="{{ service?.name }}"/>
+    </div>
+    <div>
+      <label htmlFor="SiteId">Identifiant du Site</label>
+      <input formControlName="siteId" value="{{ service?.siteId }}">
+    </div>
+    <div class="button">
+      <button pButton type="submit">Modifier</button>
+      <button pButton class="delete" type="button" (click)="deleteService(service?.id)">Supprimer</button>
+    </div>
+  </form>
+  <span class="p-error" *ngIf="errorMessage">{{ errorMessage }}</span>
+</div>

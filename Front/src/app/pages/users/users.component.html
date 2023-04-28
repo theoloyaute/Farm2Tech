@@ -32,7 +32,10 @@
       <label htmlFor="ServiceId">Identifiant du Service</label>
       <input formControlName="serviceId" value="{{ user?.serviceId }}">
     </div>
-    <button type="submit">Modifier</button>
+    <div class="button">
+      <button pButton type="submit">Modifier</button>
+      <button pButton class="delete" type="button" (click)="deleteUser(user?.id)">Supprimer</button>
+    </div>
   </form>
   <span class="p-error" *ngIf="errorMessage">{{ errorMessage }}</span>
 </div>

@@ -3,6 +3,7 @@ import {User} from "../../models/users";
 import {UsersService} from "../../services/users.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-users',
@@ -22,6 +23,10 @@ export class UsersComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
+      if (!this.UsersService.isLogged()) {
+        alert('Vous devez vous connecter pour accéder à cette page');
+        this.router.navigate(['/']);
+      }
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.UsersService.getUserById(id).subscribe((user: User) => {
       this.user = user;
@@ -34,7 +39,7 @@ export class UsersComponent implements OnInit {
       mobile: new FormControl('', [Validators.required]),
       password: new FormControl(''),
       isadmin: new FormControl(''),
-      serviceId: new FormControl(''),
+      serviceId: new FormControl('', [Validators.required]),
     });
   }
 
@@ -52,7 +57,24 @@ export class UsersComponent implements OnInit {
       }
 
       this.UsersService.update(user).subscribe(result => {
-        this.router.navigate(['/users/' + this.user?.id]);
+        this.router.navigate(['/']);
+      }, (error: HttpErrorResponse) => {
+        if (error.status == 404) {
+          this.errorMessage = "Erreur de modification !";
+        }
       });
+  }
+
+  deleteUser(id: any) {
+    this.UsersService.delete(id).subscribe(result => {
+      this.router.navigate(['/']);
+    }, (error: HttpErrorResponse) => {
+      if (error.status == 404) {
+        this.errorMessage = "Erreur de suppression !";
+      }
+      if (error.status == 500) {
+        this.errorMessage = "Vous ne pouvez pas le supprimer !";
+      }
+    });
   }
 }
