@@ -52,7 +52,7 @@ export class UsersComponent implements OnInit {
       }
 
       this.UsersService.update(user).subscribe(result => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/users/' + this.user?.id]);
       });
   }
 }

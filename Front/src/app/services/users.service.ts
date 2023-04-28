@@ -12,8 +12,7 @@ export class UsersService {
   protected componentUrl = this.baseUrl + '/Users';
 
   constructor(
-    protected http: HttpClient,
-    protected jwtHelper: JwtHelperService
+    protected http: HttpClient
   ) {
   }
 
@@ -41,9 +40,9 @@ export class UsersService {
     return this.http.put(this.componentUrl, user, {headers});
   }
 
-  isAdmin() {
-    const token: any = localStorage.getItem('token');
-    const decodedToken = this.jwtHelper.decodeToken(token);
-    console.log(decodedToken);
-  }
+  // isAdmin() {
+  //   const token: any = localStorage.getItem('token');
+  //   const decodedToken = this.jwtHelper.decodeToken(token);
+  //   console.log(decodedToken);
+  // }
 }

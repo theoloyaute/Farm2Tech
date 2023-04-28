@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.UsersService.isAdmin();
     this.UsersService.getUsers().subscribe((users: User[]) => {
       this.users = users;
       this.cols = [

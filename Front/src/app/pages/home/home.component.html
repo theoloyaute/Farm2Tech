@@ -14,12 +14,12 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user>
-      <tr class="object" [routerLink]="['/users/' + user.id]">
-        <td>{{ user.firstname }} {{ user.lastname }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.mobile }}</td>
-        <td>{{ user.service?.name }}</td>
-        <td>{{ user.service?.site?.city }}</td>
+      <tr class="object">
+        <td [routerLink]="['/users/' + user.id]">{{ user.firstname }} {{ user.lastname }}</td>
+        <td [routerLink]="['/users/' + user.id]">{{ user.email }}</td>
+        <td [routerLink]="['/users/' + user.id]">{{ user.mobile }}</td>
+        <td [routerLink]="['/service/' + user.serviceId]">{{ user.service?.name }}</td>
+        <td [routerLink]="['/site/' + user.service.siteId]">{{ user.service?.site?.city }}</td>
       </tr>
     </ng-template>
   </p-table>

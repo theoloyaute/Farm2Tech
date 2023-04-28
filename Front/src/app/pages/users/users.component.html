@@ -26,7 +26,7 @@
     </div>
     <div>
       <label htmlFor="isadmin">Admin</label>
-      <input type="checkbox" formControlName="isadmin" value="{{ user?.isadmin }}">
+      <input type="checkbox" formControlName="isadmin" [checked]="user?.isadmin">
     </div>
     <div>
       <label htmlFor="ServiceId">Identifiant du Service</label>
